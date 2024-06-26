@@ -1,0 +1,29 @@
+{% extends "item/base.html" %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    
+    {% block body %}
+        {% for item in item_list %}
+            <div class="row">
+                <div class="col-md-3 offset-md-2">
+                    <img class="card" height="120px" width="290" src="https://jogohoje.com/wp-content/uploads/sites/15/2022/11/DorivalJunior-Flamengo-MarceloCortes.jpg">
+                </div>
+                <div class="col-md-4">
+                    <h3>{{ item.item_name }}</h3>
+                    <h5>{{ item.item_description }}</h5>
+                    <h6>{{item.user_name}}</h6>
+                </div>
+                <div class="col-md-2">
+                    <a href="{% url 'item:detail' item.id %}" class="btn btn-success">Details</a>
+                </div>
+            </div>
+        {% endfor %}    
+    {% endblock %}
+
+</body>
+</html>
