@@ -7,4 +7,5 @@ class ItemForm(forms.ModelForm):
         fields = [
             "item_name",
             "item_drescription",
+            "image",
         ]
