@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.core.paginator import Paginator
 from .models import Item
 from .forms import ItemForm
 
@@ -10,11 +11,19 @@ def home(request):
 
 def index(request):
     item_list = Item.objects.all()
+
+    item_name = request.GET.get("item_name")
+    if( item_name != "") and (item_name is not None):
+        item_list = item_list.filter(item_name__icontains=item_name)
+    
+    paginator = Paginator(item_list, 3)
+    page = request.GET.get("page")
+    item_list = paginator.get_page(page)
     
     context = {
         "item_list": item_list,
     }
-
+    
     return render(request, "item/index.html", context)
 
 def item(request):

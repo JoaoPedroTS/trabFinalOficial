@@ -8,10 +8,15 @@
 <body>
     
     {% block body %}
+        <form method="GET">
+            <input type="search" name="item_name">
+            <button type="submit">Buscar</button>
+        </form>
+        
         {% for item in item_list %}
             <div class="row">
                 <div class="col-md-3 offset-md-2">
-                    <img class="card" height="120px" width="290" src="https://jogohoje.com/wp-content/uploads/sites/15/2022/11/DorivalJunior-Flamengo-MarceloCortes.jpg">
+                    <img class="card" height="70px" width="210" src="https://jogohoje.com/wp-content/uploads/sites/15/2022/11/DorivalJunior-Flamengo-MarceloCortes.jpg">
                 </div>
                 <div class="col-md-4">
                     <h3>{{ item.item_name }}</h3>
@@ -23,6 +28,18 @@
                 </div>
             </div>
         {% endfor %}    
+
+        {% if item_list.has_previous %}
+            <a href="?page=1">Primeiro</a>
+            <a href="?page={{ item_list.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        Page: {{ item_list.number }} of {{ item_list.paginator.num_pages }}
+
+        {% if item_list.has_next %}
+            <a href="?page={{ item_list.next_page_number }}">Proximo</a>
+            <a href="?page={{ item_list.paginator.num_pages }}">Ultima</a>
+        {% endif %}
     {% endblock %}
 
 </body>
