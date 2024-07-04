@@ -79,7 +79,7 @@ Após analise de requisito o escopo do projeto foi modelado, seguindo o modelo M
 - **User**
 
 ### Modelagem banco de dados (simplificada)
-::: mermaid
+``` mermaid
     erDiagram
     
     Perfil || --o{ Usuario: contains
@@ -102,7 +102,7 @@ Após analise de requisito o escopo do projeto foi modelado, seguindo o modelo M
         int Item
     }
 
-:::
+```
 
 ### Implementações futuras
 Este projeto foi desenvolvido seguido os requisitos da disciplina, entretanto existe espaço para melhorias, que n foram implementadas pois tem uma complexidade maior e demandam mais tempo e esforço, mas são essas:
