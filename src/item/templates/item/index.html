@@ -8,10 +8,20 @@
 <body>
     
     {% block body %}
-        <form method="GET">
-            <input type="search" name="item_name">
-            <button type="submit">Buscar</button>
-        </form>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="card card-sm">
+                    <div class="card-body row no-gutters align-items-center">
+                        <div class="col">
+                            <input type="search" name="item_name" placeholder="Search" class="form-control form-control-borderless">
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-success" type="submit">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         
         {% for item in item_list %}
             <div class="row">
@@ -29,17 +39,34 @@
             </div>
         {% endfor %}    
 
-        {% if item_list.has_previous %}
-            <a href="?page=1">Primeiro</a>
-            <a href="?page={{ item_list.previous_page_number }}">Anterior</a>
-        {% endif %}
+        <div class="row">
+            <div class="col-md-3 offset-md-4">
+                <ul class="pagination">
+                    {% if item_list.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">Primeiro</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ item_list.previous_page_number }}">Anterior</a>
+                        </li>
+                    {% endif %}
 
-        Page: {{ item_list.number }} of {{ item_list.paginator.num_pages }}
+                    <li class="page-link active">
+                        Page: {{ item_list.number }} of {{ item_list.paginator.num_pages }}
+                    </li>
 
-        {% if item_list.has_next %}
-            <a href="?page={{ item_list.next_page_number }}">Proximo</a>
-            <a href="?page={{ item_list.paginator.num_pages }}">Ultima</a>
-        {% endif %}
+                    {% if item_list.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ item_list.next_page_number }}">Proximo</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ item_list.paginator.num_pages }}">Ultima</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>        
+        
     {% endblock %}
 
 </body>
