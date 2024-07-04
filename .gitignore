@@ -1,4 +1,4 @@
+.gitignore
 /venv
 /assets
 db.sqlite3
-readme.md
