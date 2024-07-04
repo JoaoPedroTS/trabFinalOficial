@@ -21,6 +21,10 @@ from user import views as user_views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import handler404
+from src import views as src_views
+
+handler404 = 'src.views.custom_404_view'
 
 urlpatterns = [
     #Admin path
