@@ -1,4 +1,6 @@
 # Trabalho final ProgWeb
+Grupo: João Pedro Tavares - 19102493
+        Rodrigo Guedes - 19204117
 
 [link para o projeto na nuvem](https://dorodash.pythonanywhere.com)
 
